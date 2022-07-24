@@ -46,7 +46,7 @@ export const GuildItemList:FC<Props> = ({guildName}) => {
                 <div className="w-full flex items-center space-x-2 my-3">
                     <Card bordered className=" bg-card w-full m-2">
                         <Card.Body className="flex items-center space-x-2">
-                            <Avatar size={"sm"} src={guild.icon || "https://bafybeibabhdxh72vd7p35awdmm3hexalpj6uiivlu7wyb3hrocm7neveri.ipfs.dweb.link/vess_logo.png"} />
+                            <Avatar size={"sm"} src={guild.icon || "https://bafybeihlin6zvkyrjiqtocsvmlxn3n3vj5gqqorqah2e4z2glmbadyu34u.ipfs.dweb.link/logo_mini.png"} />
                             <h2 className="text-3xl">{guild.name}</h2>
                         </Card.Body>
                     </Card>

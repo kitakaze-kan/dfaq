@@ -34,7 +34,7 @@ const Home: NextPage = () => {
                     return (
                       <Card key={guild.id} bordered className=" bg-card w-auto m-2">
                           <Card.Body>
-                              <Avatar className="mx-auto" src={guild.icon || "https://bafybeibabhdxh72vd7p35awdmm3hexalpj6uiivlu7wyb3hrocm7neveri.ipfs.dweb.link/vess_logo.png"} />
+                              <Avatar className="mx-auto" src={guild.icon || "https://bafybeihlin6zvkyrjiqtocsvmlxn3n3vj5gqqorqah2e4z2glmbadyu34u.ipfs.dweb.link/logo_mini.png"} />
                               <Card.Title tag="h2">{guild.name}</Card.Title>
                               <Card.Actions className="justify-end">
                                   <Button onClick={() => goToGuild(guild)} type="button" className=" bg-gradient-to-r from-border_l via-border_via to-border_r">Go To Project</Button>
