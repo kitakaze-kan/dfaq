@@ -21,7 +21,8 @@ export const useCreateGuild = () => {
 
       const res = await fetch(
         `/api/initializeGuild?table=${TABLE_NAME}&id=${rows.length.toString()}&tablename=${name}&icon=${
-          icon || ""
+          icon ||
+          "https://bafybeihlin6zvkyrjiqtocsvmlxn3n3vj5gqqorqah2e4z2glmbadyu34u.ipfs.dweb.link/logo_mini.png"
         }`
       );
 

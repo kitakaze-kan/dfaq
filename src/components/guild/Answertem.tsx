@@ -13,16 +13,15 @@ export const Answertem: FC<TopicItemProps> = ({item}) => {
 
 
     return (
-        <Table.Row className="cursor-pointer">
-            <span></span>
-            <span>{item.answer}</span>
-            <span>
+        <div className="w-full text-left my-2">
+            <textarea className="w-full my-1 py-2 px-6 bg-form border rounded-xl text-lg border-none hover:border-none focus:outline-white appearance-none" readOnly value={item.answer} />
+            <p className="text-right">
                 {ensLoading ? (
                     <CommonSpinner size="sm" />
                 ) : (
-                    <span>{ens}</span>
+                    <span>by {ens}</span>
                 )}    
-            </span>
-        </Table.Row>
+            </p>
+        </div>
     )
 }

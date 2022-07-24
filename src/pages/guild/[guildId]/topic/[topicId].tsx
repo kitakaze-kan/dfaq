@@ -9,6 +9,7 @@ const GuildPage: NextPage = () => {
   const router = useRouter()
   const guildId = router.query.guildId as string
   const topicId = router.query.topicId as string  
+  const {guild} = useGuild(guildId)
   return (
     <TopicDetail topicId={topicId} />
   )

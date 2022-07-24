@@ -26,18 +26,11 @@ export default async function createAnswer(
     if (!(PRIVATE_KEY && ALCHEMY_API_KEY))
       return respondError(req, res, "No valid privateKey or node key");
 
-    console.log({ PRIVATE_KEY });
-    console.log({ ALCHEMY_API_KEY });
-
     const wallet = new Wallet(PRIVATE_KEY);
 
     // An RPC provider must be provided to establish a connection to the chain
     const provider = new providers.AlchemyProvider("goerli", ALCHEMY_API_KEY);
-    // By default, `connect` uses the Tableland testnet validator;
-    // it will sign a message using the associated wallet
     const signer = wallet.connect(provider);
-
-    console.log("address", signer.address);
 
     const tableland = await connect({ network: "testnet", signer });
 
@@ -45,8 +38,14 @@ export default async function createAnswer(
     const now = Date.now();
 
     // Insert a row into the table
+    console.log(
+      `INSERT INTO ${table} (id, topicId, answerer, answer, createdAt, updatedAt) VALUES (${
+        rows.length
+      }, ${Number(topic)}, '${answerer}','${answer}', ${now}, ${now});`
+    );
+
     const { hash } = await tableland.write(
-      `INSERT INTO ${table} (id, topcId, answerer, answer, createdAt, updatedAt) VALUES (${
+      `INSERT INTO ${table} (id, topicId, answerer, answer, createdAt, updatedAt) VALUES (${
         rows.length
       }, ${Number(topic)}, '${answerer}','${answer}', ${now}, ${now});`
     );

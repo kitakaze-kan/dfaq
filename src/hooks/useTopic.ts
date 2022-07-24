@@ -1,6 +1,5 @@
 import { TopicForm } from "@/interfaces";
 import { useSelectedGuild, useSetForceRefetchTopics } from "@/jotai";
-import { useSetConnectWalletModal } from "@/jotai/ui";
 import { useWalletAccount } from "./useWalletAccount";
 
 export const useTopic = () => {

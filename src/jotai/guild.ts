@@ -1,4 +1,4 @@
-import { Guild, Topic } from "@/interfaces";
+import { Answer, Guild, Topic } from "@/interfaces";
 import { atom, useAtom, useSetAtom } from "jotai";
 
 export const guildList = atom<Guild[] | null>(null);
@@ -12,6 +12,10 @@ export const useSelectedGuild = () => useAtom(guild);
 export const topics = atom<Topic[] | null>(null);
 
 export const useTopics = () => useAtom(topics);
+
+export const answers = atom<Answer[] | null>(null);
+
+export const useAnswers = () => useAtom(answers);
 
 export const forceRefetchTopics = atom<boolean>(false);
 

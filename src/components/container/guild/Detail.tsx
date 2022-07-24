@@ -42,7 +42,7 @@ export const TopicDetail:FC<Props> = ({topicId}) => {
                 <div className="w-fullspace-x-2 my-3">
                     <Card bordered className=" bg-card w-full m-2">
                         <Card.Body className="">
-                            <h2 className="text-left text-lg">{topic.topic}</h2>
+                            <h2 className="text-left text-2xl">{topic.topic}</h2>
                             <div className="my-4">
                                 <AnswerForm onSubmit={handleSubmit}/>
                             </div>
@@ -50,21 +50,12 @@ export const TopicDetail:FC<Props> = ({topicId}) => {
                     </Card>
                 </div>
                 <div className='overflow-x-auto w-full my-4'>
-                    <Table className="w-full">
-                        <Table.Head>
-                            <span></span>
-                            <span>Answer</span>
-                            <span>By</span>
-                        </Table.Head>
-
-                        <Table.Body>
-                            {answers && answers.length>0 && answers.map((answer) => {
-                                return (
-                                    <Answertem key={answer.id} item={answer}/>
-                                )  
-                            })}
-                        </Table.Body>
-                    </Table>
+                    <h1 className="text-3xl font-bold">Topics</h1>
+                    {answers && answers.length>0 && answers.map((answer) => {
+                        return (
+                            <Answertem key={answer.id} item={answer}/>
+                        )  
+                    })}
                 </div>
             </div>
             <CreateTopicModal />

@@ -4,7 +4,6 @@ import { FC,useEffect } from "react";
 import { Card,Button } from "react-daisyui";
 import { useForm } from "react-hook-form";
 import { FileUploader } from "./parts/FileUploader";
-import { PaymentStepModal } from "./parts/PaymentStepModal";
 
 type Props = {
     onSubmit:(data: any) => void
@@ -87,7 +86,6 @@ export const CreateGuildCard:FC<Props> = ({onSubmit}) => {
                 </form>
                 </Card.Body>
         </Card>
-        <PaymentStepModal />
         </>
     )
 }

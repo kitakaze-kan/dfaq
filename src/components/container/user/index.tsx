@@ -1,38 +1,69 @@
+import { CommonSpinner } from "@/components/common/CommonSpinner";
 import { DisplayAvatar } from "@/components/common/DisplayAvatar";
-import { WorkCredentialCard } from "@/components/user/WorkCredentialCard";
-import { useCeramicAcount } from "@/hooks/useCeramicAcount";
-import { useWCRecords } from "@/hooks/useWorkCredentials";
-import { formatDID } from "@self.id/framework";
+import { UserItemCard } from "@/components/user/UserItemCard";
+import { useUserItems } from "@/hooks/useUserItems";
 import { FC } from "react";
 import { Card } from "react-daisyui";
 
 type UserContainerProps = {
-    did: string
+    account: string
 }
-export const UserContainer:FC<UserContainerProps> = ({did}) => {
+export const UserContainer:FC<UserContainerProps> = ({account}) => {
 
-    const {name, avator} = useCeramicAcount(did)
-    const workCredentials = useWCRecords(did)
+    const {itemsList, isLoading} = useUserItems(account)
+
+    if(isLoading) {
+        return (
+            <main className=" text-center h-screen overflow-hidden ">
+                <CommonSpinner />
+            </main>
+        )
+    }
 
     return (
-        <main className=" text-center h-screen">
+        <main className="text-center h-screen px-4">
             <Card bordered normal={"lg"} className="w-full bg-card">
                 <Card.Body className={"text-left"}>
                 <DisplayAvatar
-                  did={did}
+                  did={account}
                   label={
-                    name || formatDID(did, 12)
+                    account
                   }
-                  src={avator}
                   hiddenLabelOnSp={true}
                 />
                 </Card.Body>
             </Card>
 
-            <div className="grid grid-cols-4 flex-wrap p-4 items-center overflow-auto w-full mx-auto">
-                {workCredentials && workCredentials.content?.WorkCredentials.map((wc) => {
+            <div className="w-full mx-auto my-4">
+                {itemsList && itemsList.map(item => {
                     return (
-                        <WorkCredentialCard key={wc.id} wc={wc} />
+                        <>
+                            <h2 className="text-left text-3xl font-bold my-2 ">{item.guild.name}</h2>
+                            {(item.topics && item.topics.length>0) && (
+                                <>
+                                    <h3 className="text-left text-xl font-bold">Questions</h3>
+                                    <div className="grid grid-cols-4 flex-wrap p-4 items-center overflow-auto w-full mx-auto">
+                                        {item.topics.map((t) => {
+                                            return (
+                                                <UserItemCard key={t.id} guild={item.guild} topic={t} />
+                                            )
+                                        })}
+                                    </div>
+                                </>
+                            )}
+                            {(item.answers && item.answers.length>0) && (
+                                <>
+                                    <h3 className="text-left text-xl font-bold">Answers</h3>
+                                    <div className="grid grid-cols-4 flex-wrap p-4 items-center overflow-auto w-full mx-auto">
+                                        {item.answers.map((a) => {
+                                            return (
+                                                <UserItemCard key={a.id} guild={item.guild} answer={a} />
+                                            )
+                                        })}
+                                    </div>
+                                </>
+                            )}
+                        </>
                     )
                 })}
             </div>

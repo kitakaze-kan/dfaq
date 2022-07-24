@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "react-daisyui";
 import AccountButton from "@/components/common/AccountButton";
 import { useRouter } from "next/router";
 
@@ -21,9 +20,15 @@ export const Header = () => {
     <div className="navbar h-24 py-1 px-2 sm:px-8">
         <div className="flex flex-grow">
             <a className="btn btn-ghost normal-case text-xl">
-                <Link href="/" passHref>
+            <Link href="/" passHref>
                     <div className="text-center flex">
-                    <h1 className="text-5xl font-bold">DFAQ</h1>
+                    <Image
+                        src="/logo_transparent.png"
+                        alt="contx"
+                        objectFit="cover"
+                        width="80px"
+                        height="80px"
+                    />
                     </div>
                 </Link>
             </a>

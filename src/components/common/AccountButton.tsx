@@ -35,7 +35,7 @@ export default function AccountButton() {
   const setShow = useSetConnectWalletModal()
 
   const goToMypage = () => {
-    Router.push(`/dashboard`);
+    Router.push(`/user/${account}`);
   };
   const goToWCs = async (did:string) => {
     if(!did) {
@@ -48,8 +48,7 @@ export default function AccountButton() {
   if (account) {
     const buttons =
     <>
-      <MenuButton label="Work Credentials" onClick={() => goToWCs(did)} />
-      <MenuButton label="Dashboard" onClick={() => goToMypage()} />
+      <MenuButton label="MyPage" onClick={() => goToMypage()} />
       <MenuButton label="Disconnect" onClick={() => disconnectCeramic()} />
     </>
 
