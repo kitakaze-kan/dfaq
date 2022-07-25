@@ -50,7 +50,7 @@ export const TopicDetail:FC<Props> = ({topicId}) => {
                     </Card>
                 </div>
                 <div className='overflow-x-auto w-full my-4'>
-                    <h1 className="text-3xl font-bold">Topics</h1>
+                    <h1 className="text-3xl font-bold">Answers</h1>
                     {answers && answers.length>0 && answers.map((answer) => {
                         return (
                             <Answertem key={answer.id} item={answer}/>
